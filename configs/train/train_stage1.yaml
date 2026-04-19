@@ -36,7 +36,7 @@ dataset:
         target: diffbir.dataset.file_backend.HardDiskBackend
 
       out_size: 512
-      crop_type: none
+      crop_type: random
 
       use_hflip: false
       use_rot: false
