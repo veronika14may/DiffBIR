@@ -52,7 +52,7 @@ dataset:
       jpeg_range: [30, 100]
 
 batch_transform:
-  target: diffbir.dataset.batch_transform.IdentityBatchTransform
+  target: diffbir.dataset.batch_transform.RealESRGANBatchTransform
 
 train:
   # experiment directory path
