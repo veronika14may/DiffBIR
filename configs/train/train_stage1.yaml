@@ -19,37 +19,47 @@ model:
 
 dataset:
   train:
-    target: diffbir.dataset.codeformer.CodeformerDataset
+    target: diffbir.dataset.realesrgan.RealESRGANDataset
     params:
-      # training file list path
-      file_list: /kaggle/working/hq_list.txt
+      # Path to the file list.
+      file_metas:
+        # The training set is formatted as a parquet file.
+        # Each row contains file path, long caption and short caption of a high-quality image.
+        - file_list: /kaggle/working/meta.parquet
+          image_path_key: image_path
+          short_prompt_key: llava_short
+          long_prompt_key: llava_long
+
+      p_long_prompt: 0.2
+
       file_backend_cfg:
         target: diffbir.dataset.file_backend.HardDiskBackend
+
       out_size: 512
-      crop_type: center
-      blur_kernel_size: 41
-      kernel_list: ['iso', 'aniso']
-      kernel_prob: [0.5, 0.5]
-      blur_sigma: [0.1, 3]
-      downsample_range: [2, 4]
-      noise_range: [0, 10]
-      jpeg_range: [70, 100]
-  val:
-    target: diffbir.dataset.codeformer.CodeformerDataset
-    params:
-      # validation file list path
-      file_list: 
-      file_backend_cfg:
-        target: diffbir.dataset.file_backend.HardDiskBackend
-      out_size: 512
-      crop_type: center
-      blur_kernel_size: 41
-      kernel_list: ['iso', 'aniso']
-      kernel_prob: [0.5, 0.5]
-      blur_sigma: [0.1, 12]
-      downsample_range: [1, 12]
-      noise_range: [0, 15]
-      jpeg_range: [30, 100]
+      crop_type: none
+
+      use_hflip: false
+      use_rot: false
+
+      blur_kernel_size: 21
+      kernel_list: ['iso', 'aniso', 'generalized_iso', 'generalized_aniso', 'plateau_iso', 'plateau_aniso']
+      kernel_prob: [0.45, 0.25, 0.12, 0.03, 0.12, 0.03]
+      sinc_prob: 0.1
+      blur_sigma: [0.2, 3]
+      betag_range: [0.5, 4]
+      betap_range: [1, 2]
+
+      blur_kernel_size2: 21
+      kernel_list2: ['iso', 'aniso', 'generalized_iso', 'generalized_aniso', 'plateau_iso', 'plateau_aniso']
+      kernel_prob2: [0.45, 0.25, 0.12, 0.03, 0.12, 0.03]
+      sinc_prob2: 0.1
+      blur_sigma2: [0.2, 1.5]
+      betag_range2: [0.5, 4]
+      betap_range2: [1, 2]
+
+      final_sinc_prob: 0.8
+
+      p_empty_prompt: 0.2
 
 batch_transform:
   target: diffbir.dataset.batch_transform.RealESRGANBatchTransform
