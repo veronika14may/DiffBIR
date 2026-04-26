@@ -70,10 +70,10 @@ batch_transform:
     # the first degradation process
     resize_prob: [0.2, 0.7, 0.1] # up, down, keep
     resize_range: [0.15, 1.5]
-    gaussian_noise_prob: 0.5
-    noise_range: [1, 30]
-    poisson_scale_range: [0.05, 3]
-    gray_noise_prob: 0.4
+    gaussian_noise_prob: 0.3
+    noise_range: [1, 10]
+    poisson_scale_range: [0.05, 1.0]
+    gray_noise_prob: 0.2
     jpeg_range: [30, 95]
 
     # the second degradation process
@@ -81,10 +81,10 @@ batch_transform:
     second_blur_prob: 0.8
     resize_prob2: [0.3, 0.4, 0.3] # up, down, keep
     resize_range2: [0.3, 1.2]
-    gaussian_noise_prob2: 0.5
-    noise_range2: [1, 25]
-    poisson_scale_range2: [0.05, 2.5]
-    gray_noise_prob2: 0.4
+    gaussian_noise_prob2: 0.3
+    noise_range2: [1, 8]
+    poisson_scale_range2: [0.05, 0.8]
+    gray_noise_prob2: 0.2
     jpeg_range2: [30, 95]
 
 train:
