@@ -64,7 +64,7 @@ dataset:
 batch_transform:
   target: diffbir.dataset.batch_transform.RealESRGANBatchTransform
   params:
-    use_sharpener: true
+    use_sharpener: false
     # Queue size of training pool, this should be multiples of batch_size (per GPU).
     queue_size: 256
     # the first degradation process
