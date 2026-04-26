@@ -74,7 +74,7 @@ batch_transform:
     noise_range: [1, 10]
     poisson_scale_range: [0.05, 1.0]
     gray_noise_prob: 0.2
-    jpeg_range: [30, 95]
+    jpeg_range: [60, 95]
 
     # the second degradation process
     stage2_scale: 4
@@ -85,7 +85,7 @@ batch_transform:
     noise_range2: [1, 8]
     poisson_scale_range2: [0.05, 0.8]
     gray_noise_prob2: 0.2
-    jpeg_range2: [30, 95]
+    jpeg_range2: [70, 95]
 
 train:
   # experiment directory path
