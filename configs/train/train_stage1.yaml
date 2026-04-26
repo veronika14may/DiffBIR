@@ -69,7 +69,7 @@ batch_transform:
     queue_size: 256
     # the first degradation process
     resize_prob: [0.2, 0.7, 0.1] # up, down, keep
-    resize_range: [0.15, 1.5]
+    resize_range: [0.3, 1.2] # resize from second stage
     gaussian_noise_prob: 0.3
     noise_range: [1, 10]
     poisson_scale_range: [0.05, 1.0]
