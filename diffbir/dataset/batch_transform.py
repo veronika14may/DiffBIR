@@ -265,15 +265,15 @@ class RealESRGANBatchTransform(BatchTransform):
             out = filter2D(out, sinc_kernel)
 
         # resize back to gt_size since We are doing restoration task
-        if stage2_scale != 1:
-            out = F.interpolate(out, size=(ori_h, ori_w), mode="bicubic")
+        # if stage2_scale != 1:
+            # out = F.interpolate(out, size=(ori_h, ori_w), mode="bicubic")
         # clamp and round
         lq = torch.clamp((out * 255.0).round(), 0, 255) / 255.0
 
         self.gt = hq
         self.lq = lq
         self.txt = batch["txt"]
-        self._dequeue_and_enqueue()
+        # self._dequeue_and_enqueue()
 
         # [0, 1], float32, rgb, nhwc
         lq = self.lq.float().permute(0, 2, 3, 1).contiguous()
